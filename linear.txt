@@ -1,0 +1,24 @@
+//linear searching in an array
+#include<stdio.h>
+int main()
+{
+	int a,b;
+	scanf("%d",&a); //array size
+	int arr[]=new int[a];
+	int i;
+	for(i=0;i<a;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+	scanf("%d",&b);//number to be found
+	for(i=0;i<a;i++)
+	{
+		if(b==arr[i])
+		printf("number found at position %d",i);
+			else
+			printf("number not found");
+	
+	}
+	return 0;
+}
+	
