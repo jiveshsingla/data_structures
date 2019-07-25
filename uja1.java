@@ -1,33 +1,28 @@
-//1st half left rotate and 2nd half right rotate
+//to find pairs of numbers whose sum is equal to the input sum
 import java.util.*;
-	class uja1{
+	class uja1{	
 		public static void main(String args[]){
 				Scanner sc=new Scanner(System.in);
 				int a=sc.nextInt();
 				int arr[]=new int[a];
-				int j,temp,i,size,k;
+				int sum=0,count=0,i,j,k,l,temp;
 							for(i=0;i<a;i++){
 								arr[i]=sc.nextInt();}
 				int r=sc.nextInt();
-				k=a+1;
-				k=k/2;
-				size=a/2;
+				sum=sc.nextInt();
 							for(i=0;i<r;i++){
 								temp=arr[0];
-									for(j=0;j<size-1;j++){
+									for(j=0;j<a-1;j++){
 										arr[j]=arr[j+1];}
-										arr[size-1]=temp;
-										temp=arr[a-1];
-											if(a%2==0){
-										for(j=a-1;j>size;j--){
-										arr[j]=arr[j-1];}
-										arr[size]=temp;}
-
-											else{
-for(j=a-1;j>size+1;j--){
-										arr[j]=arr[j-1];}
-										arr[k]=temp;}}
-							for(i=0;i<a;i++){
-							System.out.print(arr[i]);}
+										arr[a-1]=temp;
+									}
+							l=1;j=0;
+							for(i=0;i<a-1;i++){
+								for(k=l;k<a;k++){
+									if(sum==(arr[j]+arr[k])){
+									count++;
+									System.out.println("pair "+count + " = " +arr[j]+","+arr[k]);}}
+									l++;j++;}
+				System.out.println("total pairs whose sum is "+ sum +" = " +count);
 }
 }
