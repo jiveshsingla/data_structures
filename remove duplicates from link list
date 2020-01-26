@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+void printList(struct Node* head)
+{
+    struct Node* temp=NULL;
+    temp=head;
+    int count=0;
+    int i=0,j;
+    while(temp!=NULL)
+    {
+        count++;
+        temp=temp->next;
+    }
+    int arr[count];
+    temp=head;
+     while(temp!=NULL)
+    {
+        arr[i]=temp->data;
+        i++;
+        temp=temp->next;
+    }
+    for(i=0;i<count;i++)
+    {
+        for(j=i+1;j<count;j++)
+        {
+            if(arr[i]==arr[j])
+            arr[j]=-1;
+        }
+    }
+    for(i=0;i<count;i++)
+    {
+        if(arr[i]!=-1)
+        printf("%d",arr[i]);
+    }
+}
+int main(int argc,char* argv[])
+{
+int i,x;
+int n=atoi(argv[1]);
+x=n+1;
+struct Node* head=NULL;
+    for(i=n;i>0;i--)
+    {
+        struct Node* temp;
+        temp=(struct Node*)malloc(sizeof(struct Node));
+        temp->data=atoi(argv[x]);
+        temp->next=head;
+        head=temp;
+        x--;
+    }
+
+ printList(head);              
+      
+    return 0;  
+}  
