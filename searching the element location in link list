@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node* next;
+};
+void find(struct Node* start,int data)
+{
+  int loc=-1,count=0,flag=0;
+  if(start==NULL)
+  {
+    printf("link list is empty");
+  }
+  else
+  {
+    while(start!=NULL)
+    {
+      count++;
+      if(data==start->data)
+      {
+        loc=count;
+        flag=1;
+        break;
+      }
+      start=start->next;
+    }
+  }
+    if(flag==1)
+    printf("found at %d",loc);
+    else
+    printf("not found");
+}
+void print(struct Node* head)
+{
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+}
+int main()
+{
+    struct Node* head=NULL;
+    int i,n,x;
+    scanf("%d%d",&n,&x);
+    for(i=n;i>0;i--)
+    {
+        struct Node* temp=NULL;
+        temp=(struct Node*)malloc(sizeof(struct Node));
+        temp->data=i;
+        temp->next=head;
+        head=temp;
+    }
+    print(head);
+    find(head,x);
+    return 0;
+}
