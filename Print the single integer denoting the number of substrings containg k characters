@@ -1,0 +1,45 @@
+#include<iostream>
+#include<cstring>
+int size=256;
+using namespace std;
+int main(int argc,char* argv[])
+{
+    int num=atoi(argv[1]);
+    string str(argv[2]);
+    int count=0,flag=0;
+    int len1=str.length();
+    string sub_str[100];
+    int i,j,len2=0,k;
+    for(i=1;i<=len1;i++)
+    {
+        for(j=0;j<=len1-i;j++)
+        {
+            sub_str[len2]=str.substr(j,i);
+            len2++;
+        }
+    }
+    for(i=0;i<len2;i++)
+    {
+            char temp[size]={0};
+            string x=sub_str[i];
+            if(x.length()>=num)
+            {
+            for(j=0;j<x.length();j++){
+            temp[x[j]]+=1;}
+            for(k=0;k<size;k++)
+            {
+                if(temp[k]==num || temp[k]==0){
+                flag=0;}
+                else{
+                    flag=1;
+                    break;}
+            }
+            if(flag==0){
+            count++;}
+            else{
+            flag=0;}
+            }
+    }
+    cout<<count;
+    return 0;
+}
