@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+void forwardPrint(struct Node* head)
+{
+while(head!=NULL)
+{
+  printf("%d-",head->data);
+  head=head->next;
+}
+}
+void backwardPrint(struct Node* head)
+{
+  	struct Node* prev=NULL;
+  struct Node* next=NULL;
+  struct Node* temp=NULL;
+  temp=head;
+  while(temp!=NULL)
+  {
+    next=temp->next;
+    temp->next=prev;
+    prev=temp;
+    temp=next;
+  }
+  head=prev;
+	forwardPrint(head);
+}
+int main()
+{
+  int n;
+  scanf("%d",&n);
+  struct Node* head1=NULL;
+  int i;
+  for(i=0;i<n;i++)
+  {
+        struct Node* temp1;
+        temp1=(struct Node*)malloc(sizeof(struct Node));
+        scanf("%d",&temp1->data);
+        temp1->next=head1;
+        head1=temp1;
+    }
+    struct Node* temp2=NULL;
+    temp2=head1;
+    struct Node* temp3=NULL;
+    temp3=head1;
+    forwardPrint(temp3);
+        printf("\n");
+    backwardPrint(temp2);
+     return 0;
+}
