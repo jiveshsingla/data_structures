@@ -1,0 +1,38 @@
+#include <iostream> 
+using namespace std;
+#include<string>
+int main(int argc,char* argv[])
+{
+    string str="saaaarcaaaaaaaaaaaa";
+    int n=str.length();
+    int count=1;
+    int i,x;
+    for(i=1;i<n;i++)
+    {
+        if(str[i]==str[i-1])
+        count++;
+        else
+        {
+            if(count>=3)
+            {
+                x=i-1;
+                while(count>0){
+                str[x]=' ';
+                x--;count--;}
+            }
+            count=1;
+        }
+    }
+    if(count>=3)
+    {
+        x=i-1;
+                while(count>0){
+                str[x]=' ';
+                x--;count--;}
+    }
+    for(i=0;i<n;i++)
+    {
+        if(str[i]!=' ')
+    cout<<str[i];
+    }
+    return 0;}
