@@ -1,0 +1,35 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+class Node
+{
+    public:
+    int data;
+    Node* next;
+    Node* prev;
+};
+void printList(Node* front)
+{
+    while(front!=NULL)
+    {
+        cout<<front->data;
+        front=front->next;
+    }
+}
+int main(int argc, char* argv[])
+{
+    int n=5;
+    Node* front=NULL;
+    Node* back=NULL;
+    for(int i=n;i>0;i--)
+    {
+        Node* temp=new Node();
+        temp->data=i;
+        temp->next=front;
+        temp->prev=back;
+        front=temp;
+        back=front;
+    }  
+    printList(front);              
+    return 0;  
+}
