@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node* next;
+};
+void insertBeg(struct Node** head, int data)
+{
+  struct Node* newNode=NULL;
+  newNode=(struct Node*)malloc(sizeof(struct Node));
+  newNode->data=data;
+  newNode->next=*head;
+  *head=newNode;
+}
+void insertAfter(struct Node* prev, int data)
+{
+ struct Node* newNode=NULL;
+  newNode=(struct Node*)malloc(sizeof(struct Node));
+  newNode->data=data;
+  newNode->next=prev->next;
+  prev->next=newNode;
+}
+void insertEnd(struct Node** head, int data)
+{
+ struct Node* newNode=NULL;
+  newNode=(struct Node*)malloc(sizeof(struct Node));
+  newNode->data=data;
+  struct Node* temp=NULL;
+  temp=*head;
+  while(temp->next!=NULL)
+  {
+    temp=temp->next;
+  }
+  newNode->next=NULL;
+  temp->next=newNode;
+}
+void print(struct Node* head)
+{
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+}
+int main()
+{
+    struct Node* head=NULL;
+    int i,n,x;
+    scanf("%d%d",&n,&x);
+    for(i=n;i>0;i--)
+    {
+        struct Node* temp=NULL;
+        temp=(struct Node*)malloc(sizeof(struct Node));
+        temp->data=i;
+        temp->next=head;
+        head=temp;
+    }
+    insertAfter(head,x);
+    insertEnd(&head,x);
+    insertBeg(&head,x);
+    print(head);
+    return 0;
+}
