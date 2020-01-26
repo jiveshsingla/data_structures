@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+int main(int argc,char* argv[])
+{
+     string str1=argv[1];
+     string str2=argv[2];
+     int len1=str1.length();
+     int len2=str2.length();
+     int temp[len1+1][len2+1];
+     int len=0;
+     int row=0;
+     int col=0;
+     int i,j;
+     for(i=0;i<=len1;i++)
+     {
+         for(j=0;j<=len2;j++)
+         {
+             if(i==0||j==0)
+             temp[i][j]=0;
+             else if(str1[i-1]==str2[j-1])
+             {
+                 temp[i][j]=temp[i-1][j-1]+1;
+                 if(len<temp[i][j])
+                 len=temp[i][j];
+                 row=i;
+                 col=j;
+             }
+             else
+             temp[i][j]=0;
+         }
+     }
+     cout<<len;
+     /*
+     string x="";
+     while(temp[row][col]!=0)
+     {
+         x+=str1[row-1];
+         row--;
+         col--;
+     }
+     int len3=x.length();
+     for(i=len3-1;i>=0;i--)
+     cout<<x[i];*/
+     
+     return 0;
+}
